@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: aliceblue;
+}
+#idFoguete{
+    z-index: 99;
+    position: relative;
+    left: 43%;
+    /* top: 543px; */
+    top: 0px;
+    width: 33px;
+    height: 73px;
+}
+
+.container{
+    position: absolute;
+    padding: 30px;
+    width: 300px;
+    height: 573px;
+    background-image: url(src/AdobeStock_469890000.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#solo {
+    width: 200px;
+    position: absolute;
+    top:425px ;
+    left: 15%;
+}
