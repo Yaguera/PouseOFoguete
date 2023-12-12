@@ -45,7 +45,7 @@ let ciclo = () => {
         }else{
             var duration = 3 * 1000;
             var end = Date.now() + duration;
-
+            permitirMotor = false;
             (function frame() {
             // launch a few confetti from the left edge
             confetti({
@@ -72,7 +72,7 @@ let ciclo = () => {
         
     }
     foguete.style.top = (370 - altitude) + "px";
-    altitudeText.innerHTML = "Altitude: " + altitude.toFixed(2);
+    altitudeText.innerHTML = "Altitude: " + altitude.toFixed(2)+ "m";
     combustivelText.innerHTML = "Combustível: " + combustivel;
     velocidadeText.innerHTML = "Velocidade: " + Math.abs(velocidade.toFixed(2)) + "m/s";
 }
