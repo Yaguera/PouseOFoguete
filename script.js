@@ -71,7 +71,7 @@ let ciclo = () => {
         }
         
     }
-    foguete.style.top = (370 - altitude) + "px";
+    foguete.style.top = (470 - altitude) + "px";
     altitudeText.innerHTML = "Altitude: " + altitude.toFixed(2)+ "m";
     combustivelText.innerHTML = "Combustível: " + combustivel;
     velocidadeText.innerHTML = "Velocidade: " + Math.abs(velocidade.toFixed(2)) + "m/s";
