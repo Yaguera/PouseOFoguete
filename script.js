@@ -55,4 +55,6 @@ intervalo = window.setInterval(ciclo, 100)
 
 
 document.addEventListener('mousedown', ligar);
+document.addEventListener('touchstart', ligar);
 document.addEventListener('mouseup', desligar);
+document.addEventListener('touchend', desligar);
