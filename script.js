@@ -5,7 +5,6 @@ const velocidadeText = document.getElementById("velocidade")
 const somMotor = document.getElementById("somMotor")
 const explosao = document.getElementById("explosao")
 const aplausos = document.getElementById("aplausos")
-const confetti = document.getElementById("confetti")
 
 let altitude = 297;
 let combustivel = 45;
@@ -53,7 +52,6 @@ let ciclo = () => {
             clearInterval(intervalo)
         }else{
             aplausos.play();
-            confetti.play();
             desligar();
             var duration = 3 * 1000;
             var end = Date.now() + duration;
