@@ -9,13 +9,16 @@ let velocidade = 0;
 let aceleracao = 0;
 let motorIsOn = false;
 let intervalo;
+let permitirMotor = true;
 
 let ligar = () => {
+    if(!permitirMotor) return;
     motorIsOn = true;
     foguete.src = "src/fogueteLigado.png";
 }
 
 let desligar = () => {
+    if(!permitirMotor) return;
     motorIsOn = false;
     foguete.src = "src/fogueteDesligado.png";
 }
@@ -37,7 +40,7 @@ let ciclo = () => {
     if(altitude <= 0){
         if(velocidade <= -2.4){
             foguete.src = "src/Explosion.webp"
-            
+            permitirMotor = false;
             clearInterval(intervalo)
         }else{
             var duration = 3 * 1000;
