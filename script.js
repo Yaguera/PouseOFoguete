@@ -2,6 +2,7 @@ const foguete = document.getElementById("idFoguete")
 const altitudeText = document.getElementById("altitude")
 const combustivelText = document.getElementById("combustivel")
 const velocidadeText = document.getElementById("velocidade")
+const somMotor = document.getElementById("somMotor")
 
 let altitude = 297;
 let combustivel = 45;
@@ -13,12 +14,17 @@ let permitirMotor = true;
 
 let ligar = () => {
     if(!permitirMotor) return;
+    if(somMotor.paused){
+        somMotor.play();
+    }
     motorIsOn = true;
     foguete.src = "src/fogueteLigado.png";
 }
 
 let desligar = () => {
+    somMotor.pause();
     if(!permitirMotor) return;
+    somMotor.curentTime = 0;
     motorIsOn = false;
     foguete.src = "src/fogueteDesligado.png";
 }
@@ -43,6 +49,7 @@ let ciclo = () => {
             permitirMotor = false;
             clearInterval(intervalo)
         }else{
+            desligar();
             var duration = 3 * 1000;
             var end = Date.now() + duration;
             permitirMotor = false;
