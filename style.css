@@ -25,6 +25,13 @@ body{
     top: 0px;
 }
 
+.position{
+    user-select: none;
+    z-index: 99;
+    position: absolute;
+    top: 0px;
+}
+
 .container{
     user-select: none;
     position: absolute;
