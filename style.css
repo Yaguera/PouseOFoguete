@@ -13,14 +13,16 @@ body{
     color: aliceblue;
 }
 #idFoguete{
-    user-select: none;
-    z-index: 99;
-    position: relative;
-    left: 43%;
-    /* top: 543px; */
-    top: 0px;
+    left: 45%;
     width: 33px;
     height: 73px;
+}
+
+.position{
+    user-select: none;
+    z-index: 99;
+    position: absolute;
+    top: 0px;
 }
 
 .container{
@@ -38,7 +40,7 @@ body{
     user-select: none;
     width: 200px;
     position: absolute;
-    top:525px ;
+    top:425px ;
     left: 23%;
 }
 

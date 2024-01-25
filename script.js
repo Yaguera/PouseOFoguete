@@ -1,4 +1,5 @@
 const foguete = document.getElementById("idFoguete")
+const position = document.getElementsByClassName("position")
 const altitudeText = document.getElementById("altitude")
 const combustivelText = document.getElementById("combustivel")
 const velocidadeText = document.getElementById("velocidade")
@@ -81,7 +82,9 @@ let ciclo = () => {
         }
         
     }
-    foguete.style.top = (470 - altitude) + "px";
+    foguete.style.top = (471 - altitude) + "px";
+    velocidadeText.style.top = (470 - altitude) + "px";
+    combustivelText.style.top = (490 - altitude) + "px";
     altitudeText.innerHTML = "Altitude: " + altitude.toFixed(2)+ "m";
     combustivelText.innerHTML = "Combustível: " + combustivel;
     velocidadeText.innerHTML = "Velocidade: " + Math.abs(velocidade.toFixed(2)) + "m/s";
