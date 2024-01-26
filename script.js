@@ -36,7 +36,7 @@ let desligar = () => {
     motorIsOn = false;
     foguete.src = "src/fogueteDesligado.png";
 }
-
+let combustivelInicial = 45;
 let toggleRestartMenu = (velocidade, altitude) => {
     if(velocidade <= -2.4 && altitude <= 0){
         fail.classList.toggle("menu_fail")
@@ -45,6 +45,7 @@ let toggleRestartMenu = (velocidade, altitude) => {
       setTimeout(() => {
         fail.style.transform = "translate3d(0, 200%, 0)";
       },100);
+      combustivelInicial = 45;
     } else if(altitude <= 0) {
         sucess.classList.toggle("menu_sucess")
         sucess.style.transform = "translate3d(0, -200%, 0)"; // Define a posição inicial antes da animação
@@ -52,15 +53,16 @@ let toggleRestartMenu = (velocidade, altitude) => {
       setTimeout(() => {
         sucess.style.transform = "translate3d(0, 200%, 0)";
       },100);
+      combustivelInicial -= 5;
         
         
     }
 }
 
 
-let restart = () => {
+let restart = (combustivelInicial) => {
     altitude = 297;
-    combustivel = 45;
+    combustivel = combustivelInicial;
     velocidade = 0;
     aceleracao = 0;
     motorIsOn = false;
@@ -95,20 +97,20 @@ let ciclo = () => {
         }else{
             aplausos.play();
             desligar();
-            var duration = 2 * 1000;
+            var duration = 1 * 1000;
             var end = Date.now() + duration;
             permitirMotor = false;
             (function frame() {
             // launch a few confetti from the left edge
             confetti({
-                particleCount: 3,
+                particleCount: 2,
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 }
             });
             // and launch a few from the right edge
             confetti({
-                particleCount: 3,
+                particleCount: 2,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 }
@@ -135,13 +137,14 @@ let ciclo = () => {
 intervalo = window.setInterval(ciclo, 80)
 
 
+
 fail_btn.addEventListener('click', (e)=>{
     fail.classList.toggle("menu_fail")
-    restart()
+    restart(combustivelInicial)
 });
 sucess_btn.addEventListener('click', (e)=>{
     sucess.classList.toggle("menu_sucess")
-    restart()
+    restart(combustivelInicial)
 });
 document.addEventListener('mousedown', ligar);
 document.addEventListener('touchstart', ligar);
