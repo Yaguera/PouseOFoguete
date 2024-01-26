@@ -102,7 +102,9 @@ body{
     color: white;
   }
 
-
+  img {
+    pointer-events: none;
+}
 
 .container{
     margin: 0 auto;
