@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo Nave</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div id="informacao">
-            <p id="altitude">Altitude</p> <br>
+        <div id="informacao" class="blue-neon">
+            <p id="altitude"></p> <br>
+        </div>
+        <div class="fail">
+          <header>
+            <h3>Mission Fail</h3>
+          </header>
+          <main>
+            <p>Your rocket exploded</p>
+            <button id="tryagain">TRY AGAIN</button>
+          </main>
         </div>
         <div class="foguete">
             <img class="position" id="idFoguete" src="src/fogueteDesligado.png" alt="fogueteDesligado">
-            <p class="position" id="combustivel">Combustível</p>
-            <p class="position" id="velocidade">Velocidade</p>
+            <div class="status_foguete position blue-neon">
+              <p id="combustivel"></p>
+              <p id="velocidade"></p>
+            </div>
         </div>
         <div class="solo">
             <img id="solo" src="src/—Pngtree—3d round soil ground _5315891.png" alt="terra">
@@ -24,24 +38,7 @@
     <audio id="somMotor" src="src/audio/salamisound-6442387-light-the-blowtorch-gas_N5aT9pOY.mp3"></audio>
     <audio id="explosao" src="src/audio/mixkit-arcade-chiptune-explosion-1691.wav"></audio>
     <audio id="aplausos" src="src/audio/crowd-cheering-143103.mp3"></audio>
-    <!-- <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>

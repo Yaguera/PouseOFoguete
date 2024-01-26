@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'ROBOTO', sans-serif;
 }
 
 body{
@@ -10,6 +11,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
     color: aliceblue;
 }
 #idFoguete{
@@ -24,19 +26,77 @@ body{
     position: absolute;
     top: 0px;
 }
-
-.position{
-    user-select: none;
+#informacao,
+.status_foguete{
+    background-color:#5A1CC9;
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+#informacao{
+    left: 68%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
     z-index: 99;
     position: absolute;
     top: 0px;
 }
 
+
+.blue-neon {
+    box-shadow:
+      0 0 2px 1px rgba(100,150,255,0.9),
+      0 0 2px 1px rgba(100,150,255,1) inset,
+      0 0 1px 1px rgba(0,50,255,0.9),
+      0 0 1px 1px rgba(0,50,255,0.7) inset;
+  }
+
+  .fail,
+  .fail main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fail{
+    display: none;
+    transition-property: transform;
+    transition-timing-function:ease-in;
+    transition-duration: .2s;
+  }
+
+  .fail main button{
+    width: 100%;
+    padding: 4px;
+    background-color: white;
+    margin-top:8px;
+    font-weight: 600;
+    color: #5A1CC9;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+
+  .fail main button:hover{
+    background-color: rgb(252, 126, 126);
+    color: white;
+  }
+
+
+
 .container{
-    user-select: none;
+    margin: 0 auto;
     position: absolute;
     padding: 30px;
-    width: 400px;
+    min-width: 400px;
     height: 100vh;
     background-image: url(src/AdobeStock_469890000.jpeg);
     background-repeat: no-repeat;
@@ -54,7 +114,6 @@ body{
 
 @media screen and (max-width: 500px) {
     .container{
-        width: 100%;
         height: 100vh;
     }
     #solo {

@@ -1,8 +1,10 @@
 const foguete = document.getElementById("idFoguete")
-const position = document.getElementsByClassName("position")
+const foguete_status = document.querySelector(".status_foguete")
+const altura = document.getElementById("informacao")
 const altitudeText = document.getElementById("altitude")
 const combustivelText = document.getElementById("combustivel")
 const velocidadeText = document.getElementById("velocidade")
+const restart_btn = document.getElementById("tryagain")
 const somMotor = document.getElementById("somMotor")
 const explosao = document.getElementById("explosao")
 const aplausos = document.getElementById("aplausos")
@@ -31,6 +33,19 @@ let desligar = () => {
     foguete.src = "src/fogueteDesligado.png";
 }
 
+let tryAgain = () => {
+    const fail = document.querySelector(".fail")
+    fail.style.display = "flex";
+
+    fail.style.transform = "translate3d(0, -200%, 0)"; // Define a posição inicial antes da animação
+  // Atrasa ligeiramente a aplicação da classe para garantir que a transição ocorra
+  setTimeout(() => {
+    fail.style.transform = "translate3d(0, 200%, 0)";
+  },100);
+}
+
+
+
 let ciclo = () => {
         if(combustivel <= 0) {
             desligar()
@@ -51,6 +66,7 @@ let ciclo = () => {
             foguete.src = "src/Explosion.webp"
             permitirMotor = false;
             clearInterval(intervalo)
+            tryAgain()
         }else{
             aplausos.play();
             desligar();
@@ -83,11 +99,11 @@ let ciclo = () => {
         
     }
     foguete.style.top = (471 - altitude) + "px";
-    velocidadeText.style.top = (470 - altitude) + "px";
-    combustivelText.style.top = (490 - altitude) + "px";
-    altitudeText.innerHTML = "Altitude: " + altitude.toFixed(2)+ "m";
-    combustivelText.innerHTML = "Combustível: " + combustivel;
-    velocidadeText.innerHTML = "Velocidade: " + Math.abs(velocidade.toFixed(2)) + "m/s";
+    foguete_status.style.top = (471 - altitude) + "px";
+    altura.style.top = (430 - altitude) + "px";
+    altitudeText.innerHTML = altitude > 0  ? "HEIGHT: " + "<br>" + altitude.toFixed(2)+ "m": "Height: <br> 0 m";
+    combustivelText.innerHTML = "FUEL: " + combustivel + "L";
+    velocidadeText.innerHTML = "V: " + Math.abs(velocidade.toFixed(2)) + "m/s";
 }
 
 intervalo = window.setInterval(ciclo, 80)
