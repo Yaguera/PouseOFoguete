@@ -8,6 +8,10 @@ const restart_btn = document.getElementById("tryagain")
 const somMotor = document.getElementById("somMotor")
 const explosao = document.getElementById("explosao")
 const aplausos = document.getElementById("aplausos")
+const fail = document.querySelector(".fail")
+const sucess = document.querySelector(".sucess")
+const fail_btn = document.querySelector(".fail button")
+const sucess_btn = document.querySelector(".sucess button")
 
 let altitude = 297;
 let combustivel = 45;
@@ -33,17 +37,38 @@ let desligar = () => {
     foguete.src = "src/fogueteDesligado.png";
 }
 
-let tryAgain = () => {
-    const fail = document.querySelector(".fail")
-    fail.style.display = "flex";
-
-    fail.style.transform = "translate3d(0, -200%, 0)"; // Define a posição inicial antes da animação
-  // Atrasa ligeiramente a aplicação da classe para garantir que a transição ocorra
-  setTimeout(() => {
-    fail.style.transform = "translate3d(0, 200%, 0)";
-  },100);
+let toggleRestartMenu = (velocidade, altitude) => {
+    if(velocidade <= -2.4 && altitude <= 0){
+        fail.classList.toggle("menu_fail")
+        fail.style.transform = "translate3d(0, -200%, 0)"; // Define a posição inicial antes da animação
+      // Atrasa ligeiramente a aplicação da classe para garantir que a transição ocorra
+      setTimeout(() => {
+        fail.style.transform = "translate3d(0, 200%, 0)";
+      },100);
+    } else if(altitude <= 0) {
+        sucess.classList.toggle("menu_sucess")
+        sucess.style.transform = "translate3d(0, -200%, 0)"; // Define a posição inicial antes da animação
+      // Atrasa ligeiramente a aplicação da classe para garantir que a transição ocorra
+      setTimeout(() => {
+        sucess.style.transform = "translate3d(0, 200%, 0)";
+      },100);
+        
+        
+    }
 }
 
+
+let restart = () => {
+    altitude = 297;
+    combustivel = 45;
+    velocidade = 0;
+    aceleracao = 0;
+    motorIsOn = false;
+    intervalo;
+    permitirMotor = true;    
+    foguete.src = "src/fogueteDesligado.png";
+    intervalo = window.setInterval(ciclo, 80)
+}
 
 
 let ciclo = () => {
@@ -66,24 +91,24 @@ let ciclo = () => {
             foguete.src = "src/Explosion.webp"
             permitirMotor = false;
             clearInterval(intervalo)
-            tryAgain()
+            toggleRestartMenu(velocidade, altitude)
         }else{
             aplausos.play();
             desligar();
-            var duration = 3 * 1000;
+            var duration = 2 * 1000;
             var end = Date.now() + duration;
             permitirMotor = false;
             (function frame() {
             // launch a few confetti from the left edge
             confetti({
-                particleCount: 5,
+                particleCount: 3,
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 }
             });
             // and launch a few from the right edge
             confetti({
-                particleCount: 5,
+                particleCount: 3,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 }
@@ -94,6 +119,7 @@ let ciclo = () => {
                 requestAnimationFrame(frame);
             }
             }());
+            toggleRestartMenu(velocidade, altitude)
             clearInterval(intervalo)
         }
         
@@ -109,6 +135,14 @@ let ciclo = () => {
 intervalo = window.setInterval(ciclo, 80)
 
 
+fail_btn.addEventListener('click', (e)=>{
+    fail.classList.toggle("menu_fail")
+    restart()
+});
+sucess_btn.addEventListener('click', (e)=>{
+    sucess.classList.toggle("menu_sucess")
+    restart()
+});
 document.addEventListener('mousedown', ligar);
 document.addEventListener('touchstart', ligar);
 document.addEventListener('mouseup', desligar);

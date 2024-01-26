@@ -28,6 +28,7 @@ body{
 }
 #informacao,
 .status_foguete{
+    user-select: none;
     background-color:#5A1CC9;
     min-width: 100px;
     font-weight: bold;
@@ -56,7 +57,8 @@ body{
       0 0 1px 1px rgba(0,50,255,0.9),
       0 0 1px 1px rgba(0,50,255,0.7) inset;
   }
-
+  .sucess,
+  .sucess main,
   .fail,
   .fail main{
     display: flex;
@@ -65,6 +67,7 @@ body{
     align-items: center;
   }
 
+  .sucess,
   .fail{
     display: none;
     transition-property: transform;
@@ -72,6 +75,15 @@ body{
     transition-duration: .2s;
   }
 
+  .menu_fail{
+    display: flex;
+  }
+
+  .menu_sucess{
+    display: flex;
+  }
+
+  .sucess main button,
   .fail main button{
     width: 100%;
     padding: 4px;
@@ -84,7 +96,7 @@ body{
     cursor: pointer;
     transition: all .3s ease-in-out;
   }
-
+  .sucess main button:hover,
   .fail main button:hover{
     background-color: rgb(252, 126, 126);
     color: white;
