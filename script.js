@@ -128,8 +128,8 @@ let ciclo = () => {
     foguete_status.style.top = (471 - altitude) + "px";
     altura.style.top = (430 - altitude) + "px";
     altitudeText.innerHTML = altitude > 0  ? "HEIGHT: " + "<br>" + altitude.toFixed(2)+ "m": "Height: <br> 0 m";
-    combustivelText.innerHTML = "FUEL: " + combustivel + "L";
-    velocidadeText.innerHTML = "V: " + Math.abs(velocidade.toFixed(2)) + "m/s";
+    combustivelText.innerHTML = "Fuel: " + combustivel + "L";
+    velocidadeText.innerHTML = "Vel: " + Math.abs(velocidade.toFixed(2)) + "m/s";
 }
 
 intervalo = window.setInterval(ciclo, 80)
